@@ -1,0 +1,7 @@
+----------------------------------------------------------
+Employee ID: 547047
+Name: Paolo Andrew pomar
+Hourly rate:  PHP 60.00
+Employee type: full-time
+Number of hours working in a Month: 165.0
+Salary: PHP10050.00

@@ -1,0 +1,7 @@
+---------Payroll--------
+Employee ID: 123456
+Name: Paolo Andrew Pomar
+Hourly rate:  PHP 60.00
+Employee type: full-time
+Number of hours working in a Month: 165.0
+Salary: PHP10050.00

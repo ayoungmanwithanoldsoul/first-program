@@ -1,0 +1,7 @@
+---------Payroll--------
+Employee ID: 1234567
+Name: Paolo Andrwe Pomar
+Hourly rate:  PHP 60.00
+Employee type: part-time
+Number of hours working in a Month: 165.0
+Salary: PHP 9900.00
