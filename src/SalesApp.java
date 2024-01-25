@@ -1,15 +1,12 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 public class SalesApp {
 
     private static final Scanner scanner = new Scanner(System.in);
-    static File file = new File("salesEmployee.txt");
+    static File file = new File(".\\src\\salesEmployee.txt");
 
     static ArrayList<SalesEmployee> arrayList = new ArrayList<>();
     static ObjectOutputStream outputStream = null;
@@ -56,21 +53,14 @@ public class SalesApp {
                     Update();
                     break;
                 case 6:
-                    double[] sales = SalesAverage();
-                    System.out.println("------------");
-                    System.out.printf("Sales Average of %f salesperson: PHP %.2f", sales[1], sales[0]);
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    break;
-                case 11:
+                    System.out.println("----------------------------------------".repeat(2));
+                    SalesAverage();
+                    System.out.println("----------------------------------------".repeat(2));
                     break;
                 case 0:
+                    System.out.println("Exiting program. Goodbye!");
+                    scanner.close();
+//                    System.exit(0);
                     break;
                 default:
                     System.out.println("Please enter the corresponding option.");
@@ -79,8 +69,7 @@ public class SalesApp {
         } while (choice != 0);
     }
 
-    private static double[] SalesAverage() {
-        // TODO
+    private static void SalesAverage() {
         try {
             if (file.isFile()) {
                 inputStream = new ObjectInputStream(new FileInputStream(file));
@@ -96,8 +85,7 @@ public class SalesApp {
                     employeeSales += e.employeeSales;
                     size++;
                 }
-                return new double[]{(employeeSales / size), size};
-
+                System.out.printf("Total Accumulated Sales for %d Employees is PHP %.2f\n", size, (employeeSales / size));
             } else {
                 System.out.println("File Not Exists...!");
             }
@@ -105,7 +93,6 @@ public class SalesApp {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return new double[]{0};
     }
 
     private static void Update() {
@@ -116,11 +103,11 @@ public class SalesApp {
                 arrayList = (ArrayList<SalesEmployee>) inputStream.readObject();
                 inputStream.close();
 
-                Boolean found = false;
+                boolean found = false;
                 System.out.print("Enter the Employee Number to Update: ");
                 int employeeId = scanner.nextInt();
                 scanner.nextLine();
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
                 list = arrayList.listIterator();
 
                 while (list.hasNext()) {
@@ -143,7 +130,7 @@ public class SalesApp {
                 } else {
                     System.out.println("Record Not Found...!");
                 }
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
             } else {
                 System.out.println("File Do Not Exists...!");
             }
@@ -164,7 +151,7 @@ public class SalesApp {
                 boolean found = false;
                 System.out.println("Enter the Employee Number to Delete: ");
                 int employeeId = scanner.nextInt();
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
                 list = arrayList.listIterator();
 
                 while (list.hasNext()) {
@@ -183,7 +170,7 @@ public class SalesApp {
                 } else {
                     System.out.println("Sales Employee Record Not Found...!");
                 }
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
             } else {
                 System.out.println("File Do Not Exist...!");
             }
@@ -205,7 +192,7 @@ public class SalesApp {
                 boolean found = false;
                 System.out.print("Enter the Employee Number to Search: ");
                 int employeeId = scanner.nextInt();
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
                 list = arrayList.listIterator();
 
                 while (list.hasNext()) {
@@ -216,7 +203,7 @@ public class SalesApp {
                     }
                 }
                 if (!found) System.out.println("Record Not Found...!");
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
             } else {
                 System.out.println("File Not Exists...!");
             }
@@ -234,16 +221,16 @@ public class SalesApp {
                 arrayList = (ArrayList<SalesEmployee>) inputStream.readObject();
                 inputStream.close();
 
-                System.out.println("------------------------");
+                System.out.println("----------------------------------------".repeat(2));
 
                 for (SalesEmployee salesEmployee : arrayList) {
                     String row = String.valueOf(salesEmployee);
                     System.out.println(row);
 
                 }
-                System.out.println("----------------------------");
-                double[] sales = SalesAverage();
-                System.out.printf("Sales Average of %f salesperson: PHP %.2f", sales[1], sales[0]);
+                System.out.println("----------------------------------------".repeat(2));
+                SalesAverage();
+                System.out.println("----------------------------------------".repeat(2));
             } else {
                 System.out.println("File Not Exists...!");
             }
@@ -273,7 +260,7 @@ public class SalesApp {
 
             arrayList.add(new SalesEmployee(employeeID, employeeName, accumulatedSales));
 
-            System.out.println("------------------------------------------");
+            System.out.println("----------------------------------------".repeat(2));
 
             try {
                 outputStream = new ObjectOutputStream(new FileOutputStream(file));

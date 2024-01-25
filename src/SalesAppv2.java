@@ -57,21 +57,14 @@ public class SalesAppv2 {
         try {
             FileReader fileReader = new FileReader(".\\src\\salesAppV2out.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-//            String Line = "----------------------------------------";
-//            System.out.println(Line.repeat(2));
-//            System.out.printf("| %-15s | %-18s | %-15s |\n", "Employee ID", "Employee Name", "Sales Accumulated");
-//            System.out.println(Line.repeat(2));
+
             double totalAccumulatedSales = 0;
             int no = 0;
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-//                System.out.println(line);
                 String[] dataArr = line.split(",");
-//                int employeeID = Integer.parseInt(dataArr[0].trim());
-//                String employeeName = dataArr[1].trim();
                 totalAccumulatedSales+=Integer.parseInt(dataArr[2].trim());
                 no++;
-//                System.out.printf("| %-15d | %-18s | %-17.2f |\n", employeeID, employeeName, accumulatedSales);
             }
             System.out.printf("Total Accumulated Sales for %d Employees is PHP %.2f\n", no, (totalAccumulatedSales / no));
             bufferedReader.close();
@@ -224,7 +217,6 @@ public class SalesAppv2 {
                 }
             }
             if (!found) {
-//                System.out.println("exxec");
                 System.out.println("Employee Not Found in Directory!!!!");
             }
             bufferedReader.close();
