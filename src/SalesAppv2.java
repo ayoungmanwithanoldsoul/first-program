@@ -42,10 +42,8 @@ public class SalesAppv2 {
                     salesAverage();
                     System.out.println("----------------------------------------".repeat(2));
                     break;
-                case "7":
-
-                    break;
                 case "x":
+                case "X":
                     System.out.println("Exiting program. Goodbye!");
                     scanner.close();
                     System.exit(0);
